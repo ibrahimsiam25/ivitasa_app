@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "149320001350",
+    "project_id": "ivita-corp",
+    "storage_bucket": "ivita-corp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149320001350:android:4947289ea2ac8c85a2e747",
+        "android_client_info": {
+          "package_name": "com.ivistasa.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGbK6C1nV36cZh8vLxrapIcp2S3vh4knE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
