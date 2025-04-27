@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:ivitasa_app/core/constants/colors_resources.dart' show ColorsResources;
 import 'package:ivitasa_app/core/constants/images_resources.dart';
 import 'package:ivitasa_app/core/constants/language_resources.dart';
 import 'package:provider/provider.dart';
@@ -23,8 +24,10 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin<
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Image.asset(ImagesResources.inAppLogo, height: 25),
+        backgroundColor: ColorsResources.primaryColor,
+        title: Image.asset(
+          color: Colors.white,
+          ImagesResources.inAppLogo, height: 25),
         centerTitle: true,
         leading: Builder(
           builder: (context) {
@@ -33,7 +36,7 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin<
                 // Use the context provided by Builder
                 Scaffold.of(context).openDrawer();
               },
-              icon: Icon(Icons.menu),
+              icon: Icon(Icons.menu ,color: Colors.white,),
             );
           },
         ),
@@ -46,7 +49,7 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin<
                 ),
               );
             },
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search,color:  Colors.white),
           ),
         ],
         automaticallyImplyLeading: false,

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ivitasa_app/app_root.dart';
-import 'package:ivitasa_app/core/constants/blockers_resources.dart';
 import 'package:ivitasa_app/core/constants/colors_resources.dart';
 import 'package:ivitasa_app/core/constants/links_resources.dart';
 import 'package:ivitasa_app/core/constants/sizes_resources.dart';
 import 'package:ivitasa_app/main.dart';
-import 'package:ivitasa_app/screens/pages_holder_view.dart';
 import 'package:ivitasa_app/screens/start/splash_view.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -196,17 +193,18 @@ class _SettingsViewState extends State<SettingsView> with AutomaticKeepAliveClie
                         imagePath: ImagesResources.facebookIcon,
                         uri: Uri.parse("https://www.facebook.com/people/ivita-ksa/61572541312997/"),
                       ),
-                      ContactUsCircleWidget(
-                        title: "Linkedin",
-                        subTitle: "",
-                        imagePath: ImagesResources.linkedinIcon,
-                        uri: Uri.parse("https://www.linkedin.com/company/ivita-medical-co/"),
-                      ),
+                    
                       ContactUsCircleWidget(
                         title: "Snapchat",
                         subTitle: "",
                         imagePath: ImagesResources.snapchatIcon,
                         uri: Uri.parse("https://www.snapchat.com/add/ivita.ksa?sender_web_id=eb3321a3-59bf-4227-b52f-e965e9a855be&device_type=desktop&is_copy_url=true"),
+                      ),
+                       ContactUsCircleWidget(
+                        title: "Instagram",
+                        subTitle: "ivitasa",
+                        imagePath: ImagesResources.instagramIcon,
+                        uri: Uri.parse("https://www.instagram.com/ivitaksa/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D#"),
                       ),
                       ContactUsCircleWidget(
                         title: "Tiktok",
@@ -245,12 +243,7 @@ class _SettingsViewState extends State<SettingsView> with AutomaticKeepAliveClie
                         imagePath: ImagesResources.whatsappIcon,
                         uri: Uri.parse("https://wa.me/+966582802526"),
                       ),
-                      ContactUsCircleWidget(
-                        title: "Instagram",
-                        subTitle: "ivitasa",
-                        imagePath: ImagesResources.instagramIcon,
-                        uri: Uri.parse("https://www.instagram.com/ivitaksa/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D#"),
-                      ),
+                     
                       ContactUsCircleWidget(
                         title: "Telegram",
                         subTitle: "ivitasa",
