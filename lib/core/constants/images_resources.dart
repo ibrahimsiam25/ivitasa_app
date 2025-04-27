@@ -20,6 +20,11 @@ class ImagesResources {
   static const String phoneIcon = '$path/phone_ic.png';
   static const String mailIcon = '$path/mail_ic.png';
   static const String instagramIcon = '$path/instagram_ic.png';
+  static const String facebookIcon = '$path/icons8-facebook-50.png';
+  static const String linkedinIcon = '$path/icons8-linkedin-50.png';
+  static const String snapchatIcon = '$path/icons8-snapchat-50.png';
+  static const String tiktokIcon = '$path/icons8-tiktok-50.png';
+  static const String youtubeIcon = '$path/icons8-youtube-50.png';
 
   ///
   static const String consultingService = '$path/consulting_service_logo.png';

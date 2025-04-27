@@ -1,15 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ivitasa_app/core/constants/colors_resources.dart';
 import 'package:ivitasa_app/core/constants/images_resources.dart';
 import 'package:ivitasa_app/core/constants/sizes_resources.dart';
 import 'package:ivitasa_app/screens/pages_holder_view.dart';
 import 'package:ivitasa_app/screens/welcome/app_start_view.dart';
 import 'package:ivitasa_app/widgets/staggered_item_wrapper_widget.dart';
-
 import '../../core/constants/codes_resources.dart';
 import '../../core/constants/headlesswebview_resources.dart';
-import '../../core/services/injection/app_injection.dart';
 import '../../services/cache_service.dart';
 
 class SplashView extends StatefulWidget {
@@ -39,10 +36,10 @@ class _SplashViewState extends State<SplashView> {
     initializePullToRefreshControllers();
     //
     await homeHeadlessWebView.run();
-    await homeHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsCSS);
+   await homeHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsCSS);
     await homeHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsJS);
-    //
-    cartHeadlessWebView.run();
+    
+    //cartHeadlessWebView.run();
     cartHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsCSS);
     cartHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsJS);
     //

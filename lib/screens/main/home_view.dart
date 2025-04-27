@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:ivitasa_app/core/constants/colors_resources.dart';
 import 'package:ivitasa_app/core/constants/images_resources.dart';
 import 'package:ivitasa_app/core/constants/language_resources.dart';
 import 'package:provider/provider.dart';
@@ -95,15 +94,9 @@ class HomeDrawerWidget extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: ColorsResources.primaryContainerColor,
+              color: Colors.white,
             ),
-            child: Text(
-              '',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
+            child:Image.asset(ImagesResources.appLogo)
           ),
           drawerItemBuilder(
             LanguageResource.getText(

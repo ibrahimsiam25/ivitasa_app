@@ -185,38 +185,79 @@ class _SettingsViewState extends State<SettingsView> with AutomaticKeepAliveClie
             SizedBox(height: SizesResources.s2),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: SizesResources.s6),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Column(
                 children: [
-                  ContactUsCircleWidget(
-                    title: "Email",
-                    subTitle: "info@ivitasa.com",
-                    imagePath: ImagesResources.mailIcon,
-                    uri: Uri.parse("mailto:info@ivitasa.com"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ContactUsCircleWidget(
+                        title: "Facebook",
+                        subTitle: "",
+                        imagePath: ImagesResources.facebookIcon,
+                        uri: Uri.parse("https://www.facebook.com/people/ivita-ksa/61572541312997/"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "Linkedin",
+                        subTitle: "",
+                        imagePath: ImagesResources.linkedinIcon,
+                        uri: Uri.parse("https://www.linkedin.com/company/ivita-medical-co/"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "Snapchat",
+                        subTitle: "",
+                        imagePath: ImagesResources.snapchatIcon,
+                        uri: Uri.parse("https://www.snapchat.com/add/ivita.ksa?sender_web_id=eb3321a3-59bf-4227-b52f-e965e9a855be&device_type=desktop&is_copy_url=true"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "Tiktok",
+                        subTitle: "",
+                        imagePath: ImagesResources.tiktokIcon,
+                        uri: Uri.parse("https://www.tiktok.com/@ivitaksa?is_from_webapp=1&sender_device=pc"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "Youtube",
+                        subTitle: "",
+                        imagePath: ImagesResources.youtubeIcon,
+                        uri: Uri.parse("http://www.youtube.com/@ivitaKsa"),
+                      ),
+                    ],
                   ),
-                  ContactUsCircleWidget(
-                    title: "Phone",
-                    subTitle: "+966582802526",
-                    imagePath: ImagesResources.phoneIcon,
-                    uri: Uri.parse("tel:+966582802526"),
+ SizedBox(height:10
                   ),
-                  ContactUsCircleWidget(
-                    title: "WhatsApp",
-                    subTitle: "+966582802526",
-                    imagePath: ImagesResources.whatsappIcon,
-                    uri: Uri.parse("https://wa.me/+966582802526"),
-                  ),
-                  ContactUsCircleWidget(
-                    title: "Instagram",
-                    subTitle: "ivitasa",
-                    imagePath: ImagesResources.instagramIcon,
-                    uri: Uri.parse("https://www.instagram.com/ivitasa/"),
-                  ),
-                  ContactUsCircleWidget(
-                    title: "Telegram",
-                    subTitle: "ivitasa",
-                    imagePath: ImagesResources.telegramIcon,
-                    uri: Uri.parse("https://t.me/ivitasa"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ContactUsCircleWidget(
+                        title: "Email",
+                        subTitle: "info@ivitasa.com",
+                        imagePath: ImagesResources.mailIcon,
+                        uri: Uri.parse("mailto:info@ivitasa.com"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "Phone",
+                        subTitle: "+966582802526",
+                        imagePath: ImagesResources.phoneIcon,
+                        uri: Uri.parse("tel:+966582802526"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "WhatsApp",
+                        subTitle: "+966582802526",
+                        imagePath: ImagesResources.whatsappIcon,
+                        uri: Uri.parse("https://wa.me/+966582802526"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "Instagram",
+                        subTitle: "ivitasa",
+                        imagePath: ImagesResources.instagramIcon,
+                        uri: Uri.parse("https://www.instagram.com/ivitaksa/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D#"),
+                      ),
+                      ContactUsCircleWidget(
+                        title: "Telegram",
+                        subTitle: "ivitasa",
+                        imagePath: ImagesResources.telegramIcon,
+                        uri: Uri.parse("https://t.me/ivitasa"),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -267,8 +308,8 @@ class ContactUsCircleWidget extends StatelessWidget {
                 padding: EdgeInsets.all(SizesResources.s2),
                 child: Center(
                   child: SizedBox(
-                    height: 14,
-                    width: 14,
+                    height: 15,
+                    width: 15,
                     child: Image.asset(
                       imagePath,
                       color: Color(0xff1D79B1),
@@ -284,7 +325,7 @@ class ContactUsCircleWidget extends StatelessWidget {
           title,
           textDirection: TextDirection.ltr,
           style: TextStyle(
-            fontSize: 9,
+            fontSize: 12,
             color: Colors.black87,
           ),
         ),

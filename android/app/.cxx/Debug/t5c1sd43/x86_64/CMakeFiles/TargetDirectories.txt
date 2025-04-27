@@ -1,0 +1,2 @@
+D:/work/flutter/ivitasa_app/android/app/.cxx/Debug/t5c1sd43/x86_64/CMakeFiles/edit_cache.dir
+D:/work/flutter/ivitasa_app/android/app/.cxx/Debug/t5c1sd43/x86_64/CMakeFiles/rebuild_cache.dir
