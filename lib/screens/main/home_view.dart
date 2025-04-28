@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin<
         backgroundColor: ColorsResources.primaryColor,
         title: Image.asset(
           color: Colors.white,
-          ImagesResources.inAppLogo, height: 25),
+          ImagesResources.inAppLogo, height: 30),
         centerTitle: true,
         leading: Builder(
           builder: (context) {

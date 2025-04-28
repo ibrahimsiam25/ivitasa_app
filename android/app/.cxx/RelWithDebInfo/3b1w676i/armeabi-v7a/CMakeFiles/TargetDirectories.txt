@@ -1,0 +1,2 @@
+D:/work/flutter/ivitasa_app/android/app/.cxx/RelWithDebInfo/3b1w676i/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/work/flutter/ivitasa_app/android/app/.cxx/RelWithDebInfo/3b1w676i/armeabi-v7a/CMakeFiles/rebuild_cache.dir
