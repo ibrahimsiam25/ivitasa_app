@@ -20,6 +20,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+
       bool firstTime = CacheService().getBool("first_time") ?? true;
       if (firstTime) {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => AppStartView()));
@@ -39,7 +40,7 @@ class _SplashViewState extends State<SplashView> {
    await homeHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsCSS);
     await homeHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsJS);
     
-    //cartHeadlessWebView.run();
+    cartHeadlessWebView.run();
     cartHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsCSS);
     cartHeadlessWebView.webViewController?.injectCSSCode(source: CodesResources.hideElementsJS);
     //

@@ -58,7 +58,7 @@ class _RegisterViewState extends State<RegisterView> {
   ///
   void onLoadStop(InAppWebViewController controller, WebUri? webUri) async {
     _controller = controller;
-    await controller.injectCSSCode(source: CodesResources.hideElementsCSS);
+   await controller.injectCSSCode(source: CodesResources.hideElementsCSS);
     await controller.injectCSSCode(source: CodesResources.hideElementsJS);
     await controller.evaluateJavascript(source: CodesResources.hideElementsJS);
 
@@ -121,12 +121,13 @@ class _RegisterViewState extends State<RegisterView> {
             onWebViewCreated: (controller) async {
               _controller = controller;
             },
-            onLoadStart: onLoadStart,
-            onLoadStop: onLoadStop,
+             onLoadStart: onLoadStart,
+             onLoadStop: onLoadStop,
           ),
-          if (_isLoading) LoadingBuilderWidget(),
+           if (_isLoading) LoadingBuilderWidget(),
         ],
       ),
     );
   }
 }
+   

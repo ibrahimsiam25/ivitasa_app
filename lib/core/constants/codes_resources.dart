@@ -16,12 +16,11 @@
 //   """;
 
 class CodesResources {
-  static final String hideElementsCSS = '''
+static final String hideElementsCSS = '''
   header, 
   .header, 
   .return-to-shop,
   #header, 
-  [class*="header"],
   nav:first-of-type,
   .ht-ctc, .ht-ctc-chat, .ht-ctc-chat-style-2, .ctc-analytics, .ctc_wp_desktop, .ht_ctc_animation,
   footer, 
@@ -30,14 +29,12 @@ class CodesResources {
   .modal-backdrop,
   .modal-overlay,
   .overlay,
-  [class*="overlay"],
-  [class*="modal"],
   .cookie-banner,
   .cookie-popup,
   #cookie-dialog,
-  .wd-cookies-popup.popup-display, /* New selector added */
-  #footer, 
-  [class*="footer"] {
+  .wd-cookies-popup.popup-display,
+  #footer,
+  .wd-toolbar { /* <== ده السطر الجديد */
     display: none !important;
     height: 0 !important;
     min-height: 0 !important;
@@ -49,6 +46,8 @@ class CodesResources {
     margin-top: 0 !important;
   }
 ''';
+
+
 
   static final String hideElementsJS = '''
   function hideElements() {
