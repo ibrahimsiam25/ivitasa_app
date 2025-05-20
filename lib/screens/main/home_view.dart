@@ -1,13 +1,18 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:ivitasa_app/core/constants/colors_resources.dart' show ColorsResources;
+import 'package:ivitasa_app/core/constants/codes_resources.dart';
+import 'package:ivitasa_app/core/constants/colors_resources.dart' ;
 import 'package:ivitasa_app/core/constants/images_resources.dart';
 import 'package:ivitasa_app/core/constants/language_resources.dart';
+import 'package:ivitasa_app/widgets/loading_builder_widget.dart';
+
 import 'package:provider/provider.dart';
 import '../../core/constants/headlesswebview_resources.dart';
 import '../../core/constants/links_resources.dart';
 import '../../states/local/local_provider.dart';
-import '../../widgets/in_app_web_viewer_widget.dart';
+
 import '../search_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -18,12 +23,16 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin<HomeView> {
+    bool _canGoBack = false;
+  
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
+      appBar:_canGoBack
+          ? null
+          : AppBar(
         backgroundColor: ColorsResources.primaryColor,
         title: Image.asset(
           color: Colors.white,
@@ -61,11 +70,14 @@ class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin<
           );
         },
       ),
-      body: InAppWebViewerWidget(
-        url: URIsResources.homeUri(context.watch<LocalProvider>().local),
-        title: Image.asset(ImagesResources.inAppLogo, height: 25),
-        headlessWebView: homeHeadlessWebView,
-        disableAppBar: true,
+      body:  AppWebViewerView(
+      uri: URIsResources.homeUri(context.read<LocalProvider>().local),
+     canGoBack: (value) {
+          setState(() {
+            _canGoBack = value;
+          });
+        },
+      initialWebView: null
       ),
     );
   }
@@ -161,6 +173,138 @@ class HomeDrawerWidget extends StatelessWidget {
       title: Text(title),
       trailing: Icon(Icons.arrow_forward_ios, size: 12),
       onTap: onTap,
+    );
+  }
+}
+
+
+class AppWebViewerView extends StatefulWidget {
+  const AppWebViewerView({
+    super.key,
+    this.uri,
+    this.initialWebView,
+    this.canGoBack,
+  });
+  final WebUri? uri;
+  final HeadlessInAppWebView? initialWebView;
+ final ValueChanged<bool>? canGoBack;
+  @override
+  State<AppWebViewerView> createState() => _AppWebViewerViewState();
+}
+
+class _AppWebViewerViewState extends State<AppWebViewerView> {
+  ///
+  late String? title;
+
+  ///
+  late InAppWebViewController _controller;
+
+  ///
+  late bool _isLoading;
+  late bool _canGoBack;
+
+  ///
+  @override
+  void initState() {
+    _isLoading = true;
+    _canGoBack = false;
+    title = "";
+    widget.initialWebView?.run();
+
+    super.initState();
+  }
+
+  ///
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+void onLoadStart(InAppWebViewController controller, WebUri? webUri) async {
+  setState(() {
+    _isLoading = true;
+  });
+  _controller = controller;
+  _canGoBack = await controller.canGoBack();
+  widget.canGoBack?.call(_canGoBack);
+  setState(() {});
+}
+
+void onLoadStop(InAppWebViewController controller, WebUri? webUri) async {
+  _controller = controller;
+  _canGoBack = await controller.canGoBack();
+  widget.canGoBack?.call(_canGoBack);
+
+  await controller.injectCSSCode(source: CodesResources.hideElementsCSS);
+  await controller.evaluateJavascript(source: CodesResources.hideElementsJS);
+
+  setState(() {
+    _isLoading = false;
+  });
+}
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:  _canGoBack?AppBar(
+       title: Text(
+          title ?? "",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+          ),
+        ),
+        leading:
+             IconButton(
+                onPressed: () {
+                  _controller.goBack();
+                },
+                icon: Icon(Icons.arrow_back_ios),
+              )
+           
+      ):null,
+      body: Stack(
+        children: [
+          InAppWebView(
+            initialUrlRequest: URLRequest(url: widget.uri),
+            headlessWebView: widget.initialWebView,
+            initialSettings: InAppWebViewSettings(
+              javaScriptEnabled: true,
+              cacheEnabled: true,
+              javaScriptCanOpenWindowsAutomatically: false,
+              mediaPlaybackRequiresUserGesture: true,
+              useShouldInterceptRequest: false,
+              useShouldOverrideUrlLoading: false,
+            ),
+            onTitleChanged: (controller, title) {
+              setState(() {
+                this.title = title;
+              });
+            },
+            initialUserScripts: UnmodifiableListView(
+              [
+                UserScript(
+                  source: CodesResources.hideElementsCSS,
+                  injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START,
+                ),
+                UserScript(
+                  source: CodesResources.hideElementsJS,
+                  injectionTime: UserScriptInjectionTime.AT_DOCUMENT_END,
+                ),
+              ],
+            ),
+            onWebViewCreated: (controller) async {
+              _controller = controller;
+            },
+            onLoadStart: onLoadStart,
+            onLoadStop: onLoadStop,
+          ),
+          if (_isLoading)
+            LoadingBuilderWidget(),
+        ],
+      ),
     );
   }
 }
